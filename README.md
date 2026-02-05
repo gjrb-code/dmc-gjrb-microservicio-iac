@@ -1,32 +1,29 @@
-# Infraestructura como código (Terraform)
+# Infraestructura como código (Terraform) - Azure Container Apps
 
-Este repositorio contiene la infraestructura como código para desplegar un microservicio en Azure Container Apps.
+Este repositorio aprovisiona la infraestructura necesaria para desplegar un microservicio en Azure Container Apps, consumiendo una imagen desde Docker Hub.
 
-## Componentes aprovisionados
+## Componentes aprovisionados en Azure
 - Grupo de recursos
-- Log Analytics Workspace
+- Log Analytics Workspace (logs)
 - Entorno de Azure Container Apps
-- Azure Container App (ingress público)
+- Azure Container App (ingress público habilitado)
 
-## Variables principales
-- `prefijo`: prefijo para los nombres de recursos
-- `ubicacion`: región de Azure (por defecto `eastus`)
-- `imagen_contenedor`: imagen en Docker Hub
-- `puerto_aplicacion`: puerto interno del contenedor (por defecto `8080`)
+## Archivo de configuración requerido (obligatorio)
+Antes de ejecutar Terraform, debes modificar el archivo:
 
-## Ejecución
-1. Autenticarse en Azure:
-   - `az login`
+- `iac/terraform.tfvars`
 
-2. Inicializar Terraform:
-   - `terraform -chdir=iac init`
+En este archivo se configuran:
+- `id_suscripcion` (obligatorio)
+- `dominio_personalizado` (opcional)
+- `puerto_aplicacion` (opcional; por defecto 8080)
 
-3. Plan:
-   - `terraform -chdir=iac plan -var-file=terraform.tfvars`
+## ¿Dónde se configura cada cosa?
 
-4. Apply:
-   - `terraform -chdir=iac apply -var-file=terraform.tfvars`
+### 1) Suscripción de Azure (obligatorio)
+Se configura en:
+- `iac/terraform.tfvars` → `id_suscripcion`
 
-## Notas importantes
-- No se versionan archivos `.tfstate` ni la carpeta `.terraform/`.
-- El archivo `.terraform.lock.hcl` se genera al ejecutar `init` y puede versionarse.
+Ejemplo:
+```hcl
+id_suscripcion = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
