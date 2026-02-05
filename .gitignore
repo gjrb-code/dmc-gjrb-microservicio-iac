@@ -1,0 +1,14 @@
+# Terraform: archivos locales
+.terraform/
+*.tfstate
+*.tfstate.*
+crash.log
+crash.*.log
+
+# Variables locales (si en algún momento usas otros tfvars)
+*.auto.tfvars
+
+# Sistema/IDE
+.vscode/
+.idea/
+.DS_Store
