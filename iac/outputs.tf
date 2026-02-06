@@ -20,7 +20,10 @@ output "dominio_configurado" {
 
 output "instrucciones_dominio" {
   description = "Guía resumida para apuntar el dominio al FQDN de la Container App."
-  value = var.dominio_personalizado == null
+  value = (
+    var.dominio_personalizado == null
     ? "No se configuró dominio personalizado."
     : "Crear un CNAME desde el dominio personalizado hacia el FQDN público y luego vincular el dominio en Azure Container Apps con certificado."
+  )
 }
+

@@ -36,3 +36,21 @@ variable "dominio_personalizado" {
   type        = string
   default     = null
 }
+
+variable "usar_entorno_existente" {
+  description = "Si es true, no crea un Container Apps Environment y reutiliza uno existente."
+  type        = bool
+  default     = false
+}
+
+variable "nombre_entorno_existente" {
+  description = "Nombre del Container Apps Environment existente (solo si usar_entorno_existente = true)."
+  type        = string
+  default     = null
+}
+
+variable "grupo_recursos_entorno_existente" {
+  description = "Resource Group del Container Apps Environment existente (solo si usar_entorno_existente = true)."
+  type        = string
+  default     = null
+}

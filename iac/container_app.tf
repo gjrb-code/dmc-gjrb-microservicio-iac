@@ -1,9 +1,15 @@
 resource "azurerm_container_app" "microservicio" {
-  name                        = local.nombre_container_app
-  container_app_environment_id = azurerm_container_app_environment.entorno.id
-  resource_group_name         = azurerm_resource_group.grupo.name
-  revision_mode               = "Single"
-  tags                        = local.etiquetas_finales
+  name = local.nombre_container_app
+  #container_app_environment_id = azurerm_container_app_environment.entorno.id
+  #container_app_environment_id = data.azurerm_container_app_environment.entorno_existente.id
+  container_app_environment_id = (
+    var.usar_entorno_existente
+    ? data.azurerm_container_app_environment.entorno_existente[0].id
+    : azurerm_container_app_environment.entorno[0].id
+  )
+  resource_group_name = azurerm_resource_group.grupo.name
+  revision_mode       = "Single"
+  tags                = local.etiquetas_finales
 
   template {
     container {
