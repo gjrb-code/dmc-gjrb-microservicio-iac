@@ -23,11 +23,9 @@ En este archivo se configuran:
 ### 1) Suscripción de Azure (obligatorio)
 Se configura en:
 - `iac/terraform.tfvars` → `id_suscripcion`
-
-```md
 Ejemplo:
-```hcl
 id_suscripcion = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+
 
 ```md
 ## Diagrama de arquitectura
