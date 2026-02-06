@@ -1,12 +1,12 @@
-id_suscripcion    = "b497fd69-266c-46a9-b55b-8be0cd579667"
+id_suscripcion    = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 prefijo           = "dmc-gjrb-ms"
 ubicacion         = "eastus"
 imagen_contenedor = "docker.io/gjrbdev/gjrb-microservicio-hello:1.0.0"
 
-# Opcional: si no lo usarás, déjalo en null
+# Opcional: 
 dominio_personalizado = null
 
-# Opcional: por defecto 8080 (puedes omitirlo si deseas)
+# Opcional: por defecto 8080 
 puerto_aplicacion = 8080
 
 etiquetas = {

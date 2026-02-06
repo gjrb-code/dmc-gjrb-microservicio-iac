@@ -27,3 +27,17 @@ Se configura en:
 Ejemplo:
 ```hcl
 id_suscripcion = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+
+flowchart LR
+    U[Usuario / Cliente<br/>Navegador o curl] -->|HTTPS GET /hello| FQDN[FQDN público<br/>*.azurecontainerapps.io]
+    FQDN --> ACA[Azure Container Apps<br/>Ingress público]
+    ACA --> APP[Container App<br/>Microservicio Python /hello]
+
+    APP -->|Logs| LA[Log Analytics Workspace]
+
+    DH[Docker Hub<br/>gjrbdev/gjrb-microservicio-hello:1.0.0] -->|Pull de imagen| ACA
+
+    TF[Terraform (local)<br/>Repo IaC en GitHub] -->|Aprovisiona recursos| AZ[Azure Subscription]
+    AZ --> RG[Resource Group]
+    RG --> LA
+    RG --> ACA
