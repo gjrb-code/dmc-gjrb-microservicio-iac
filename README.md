@@ -24,10 +24,15 @@ En este archivo se configuran:
 Se configura en:
 - `iac/terraform.tfvars` → `id_suscripcion`
 
+```md
 Ejemplo:
 ```hcl
 id_suscripcion = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 
+```md
+## Diagrama de arquitectura
+
+```mermaid
 flowchart LR
     U[Usuario / Cliente<br/>Navegador o curl] -->|HTTPS GET /hello| FQDN[FQDN público<br/>*.azurecontainerapps.io]
     FQDN --> ACA[Azure Container Apps<br/>Ingress público]
